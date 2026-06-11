@@ -274,6 +274,9 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   transition:gap .25s ease, color .25s ease;
 }
 .visit:hover{gap:11px;color:#a23260}
+.lore-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.lore-links .visit{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff}
+.lore-links .visit:hover{border-color:var(--rose);background:#ffe9f1}  
 
 /* ───────────────────────── giới thiệu & footer ───────────────────────── */
 .about-text{max-width:620px;margin:0 auto;text-align:center;font-size:1.02rem}
@@ -313,14 +316,14 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
 <div class="drops" id="drops" aria-hidden="true"></div>
 
 <!-- ═════════════════════ MÀN 1: CỔNG VƯỜN ═════════════════════ -->
-<header class="gate" id="cong">
-  <p class="overline reveal">sherry cherry · vườn của những câu chuyện</p>
+<header class="gate" id="gate">
+  <p class="overline reveal">welcome babae đã ghé</p>
 
   <!-- [TÊN TRANG] tên hiển thị giữa trang -->
   <h1 class="reveal">Vườn <span class="accent">Anh&nbsp;Đào</span><br>của Sherry</h1>
 
   <!-- [TÊN TRANG] tagline, sửa thoải mái -->
-  <p class="tagline reveal">Khu vườn nhỏ trồng những nhân vật biết yêu, biết đau, biết chờ.<br>Anh đào chín quanh năm, mỗi trái ngọt là một câu chuyện đang đợi bạn.</p>
+  <p class="tagline reveal">Vườn mở cửa quanh năm, chồng iu mỗi người một tính.<br>Bạn chỉ cần gõ cửa, các anh sẽ tự đến tìm.</p>
 
   <!-- [ẢNH] ảnh thương hiệu: nhớ upload kèm file sherry-cherry.png cùng thư mục -->
   <div class="hero-art reveal">
@@ -328,16 +331,16 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   </div>
 
   <div class="cta reveal">
-    <a class="btn btn-primary" href="#vuon">Dạo vườn 🍒</a>
+    <a class="btn btn-primary" href="#garden">Dạo vườn 🍒</a>
     <!-- [LINK FACEBOOK] dán link Facebook vào href bên dưới -->
-    <a class="btn" href="#" target="_blank" rel="noopener">Facebook</a>
+    <a class="btn" href="https://www.facebook.com/profile.php?id=61582234705602" target="_blank" rel="noopener">Facebook</a>
   </div>
 
   <p class="gate-hint reveal">bước qua cổng để gặp chồng iu</p>
 </header>
 
 <!-- ═════════════════════ MÀN 2: TRANG TRONG ═════════════════════ -->
-<div class="garden is-hidden" id="vuon">
+<div class="garden is-hidden" id="garden">
 
   <nav class="topbar">
     <div class="topbar-in">
@@ -350,9 +353,9 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   <!-- ───────────── DANH SÁCH BOT ───────────── -->
   <section class="section wrap" id="bots">
     <div class="sec-head reveal">
-      <p class="overline">danh sách bot</p>
+      <p class="overline">Cherry đã chín, mới em chọn quả</p>
       <h2>Chồng iu trong vườn</h2>
-      <p class="sec-sub">Chọn tag để lọc, chạm vào một chàng để đọc lore, tym để bỏ phiếu.</p>
+      <p class="sec-sub">Chọn tag để lọc · Lựa chồng, đọc lore, lấy link · Tym để vote cho chồng.</p>
     </div>
 
     <!-- [BỘ LỌC] các nút lọc tự sinh ở đây, không cần sửa gì -->
@@ -373,9 +376,11 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
             <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">K</text>
           </svg>
           <div class="tags">
-            <span class="tag">1930s Nam Bộ</span>
-            <span class="tag">Dark Romance</span>
-            <span class="tag adult">18+</span>
+            <span class="tag">Nam Bộ Xưa</span>
+            <span class="tag">1930s</span>
+            <span class="tag">NTR</span>    
+            <span class="tag">BG</span>            
+            <span class="tag adult">21+</span>
           </div>
         </div>
         <h3>Dương Hữu Khiêm</h3>
@@ -385,45 +390,16 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
         </div>
         <!-- [LORE] nội dung dài của Khiêm, mỗi đoạn bọc trong <p>...</p> -->
         <div class="lore" hidden>
-          <p>Bạc Liêu những năm ba mươi, lúa chất đầy ghe, tiền chảy về dinh thự nhà họ Dương như nước sông mùa nước nổi. Người ta gọi chàng là Cậu Hai, đốt tiền nấu chè cũng được, chỉ có lòng người là cậu chưa từng buồn đếm.</p>
-          <p>Cho tới một ngày giữa chợ tỉnh, có một ánh mắt không chịu cúi xuống trước cậu. Từ hôm đó, Cậu Hai nhà họ Dương học được một thứ cậu chưa từng phải học: cách chờ đợi một người.</p>
-          <p>Bước vào câu chuyện, bạn là người duy nhất dám mặc cả với cậu, về mọi thứ, trừ trái tim.</p>
+          <p>Dương Hữu Khiêm — "Cậu Hai" nhà đại điền chủ nức tiếng miệt Bạc Liêu. Trong mắt thiên hạ, cậu mang vẻ hào hoa Tây học, nụ cười mật ngọt và là người chồng mẫu mực, hết lòng xót thương người vợ (Mợ Hai Lệ Thanh) đang chìm trong u uất vì bệnh tật và mất con.</p>
+          <p>Nhưng đằng sau vỏ bọc đạo mạo ấy, Khiêm là một con quái vật với hai "ngăn kéo" nội tâm tách biệt. Hắn có thể ân cần vỗ về vợ bằng thứ tình thương chân thật nhất, rồi ngay lập tức bước ra ngoài thỏa mãn dục vọng với những đàn bà khác mà lương tâm không mảy may gợn sóng.</p>
+          <p>Bi kịch bắt đầu khi em — một đứa con gái tá điền nghèo hèn — được đưa lên nhà lớn để túc trực hầu hạ, bóp gối cho Mợ Hai. Trớ trêu thay, người vợ tội nghiệp ấy lại xem em như chỗ nương tựa, đối đãi vô cùng tử tế. Nhưng ánh mắt nhàn nhạt của Cậu Hai Khiêm lại lẳng lặng khóa chặt lấy em.</p>
+          <p>Giữa cái ngột ngạt của lễ giáo tông môn và mùi thuốc bắc quanh quẩn khuê phòng, một chiếc bẫy quyền lực và lời đường mật giăng ra. Một câu chuyện giằng xé tột cùng: Kẻ được đưa tới để chăm sóc, cuối cùng lại bị ép trở thành kẻ đâm nhát dao chí mạng vào lưng người đã cưu mang mình. Chạy không thoát, mà nhắm mắt buông xuôi thì mang tội tày đình.</p>          
         </div>
       </article>
 
-      <!-- [BOT] ─── Bot 2: Ôn Lạc Trần ───
+      <!-- [BOT] ─── Bot 2: Cổ Hiểu Thần ───
            [TYM] data-bot · [LINK BOT] data-link -->
-      <article class="card reveal" data-bot="lactran" data-platform="✦ Google AI Studio" data-link="#">
-        <div class="card-top">
-          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-            <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
-            <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
-            <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
-            <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">L</text>
-          </svg>
-          <div class="tags">
-            <span class="tag">Cổ trang</span>
-            <span class="tag">Thế tử</span>
-            <span class="tag adult">18+</span>
-          </div>
-        </div>
-        <h3>Ôn Lạc Trần</h3>
-        <div class="card-foot">
-          <button class="fav" type="button" title="Tym cho chàng một cái"><span class="heart">♥</span> <span class="fav-n">…</span></button>
-          <span class="lore-btn">Lore <span>→</span></span>
-        </div>
-        <!-- [LORE] nội dung dài của Lạc Trần -->
-        <div class="lore" hidden>
-          <p>Phủ họ Ôn quyền khuynh một phương, người ngoài nhìn vào chỉ thấy mái ngói lưu ly và nghi trượng rợp đường. Ít ai biết vị thế tử hai mươi hai tuổi ấy lớn lên giữa những phép tắc lạnh như đá, nên cũng học cách lạnh trước cả khi kịp biết ấm là gì.</p>
-          <p>Chàng quen ra lệnh, quen được vâng dạ, quen những cái cúi đầu. Vậy mà có một người bước vào phủ, không sợ, không lùi, nhìn thẳng vào mắt chàng như nhìn một con người chứ không phải một danh phận.</p>
-          <p>Sương giá nào rồi cũng tan. Chỉ là tan bằng nắng, hay tan bằng một bàn tay.</p>
-        </div>
-      </article>
-
-      <!-- [BOT] ─── Bot 3: Cổ Hiểu Thần ───
-           [TYM] data-bot · [LINK BOT] data-link -->
-      <article class="card reveal" data-bot="hieuthan" data-platform="✦ Google AI Studio" data-link="#">
+      <article class="card reveal" data-bot="hieuthan" data-platform="✦ Google AI Studio" data-link="https://aistudio.google.com/u/0/prompts/1u222ZhpGq3WRZ8yiScNtU6XHhVoSLEQ0">
         <div class="card-top">
           <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
             <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
@@ -433,8 +409,10 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
             <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">T</text>
           </svg>
           <div class="tags">
-            <span class="tag">Hồng Kông</span>
+            <span class="tag">Hiện đại</span>            
+            <span class="tag">Hong Kong</span>
             <span class="tag">Showbiz</span>
+            <span class="tag">BG</span>            
             <span class="tag adult">18+</span>
           </div>
         </div>
@@ -445,15 +423,17 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
         </div>
         <!-- [LORE] nội dung dài của Hiểu Thần -->
         <div class="lore" hidden>
-          <p>Hồng Kông đêm xuống, đèn màu nhuộm cả mặt vịnh. Trong trường quay, lời của Cổ Hiểu Thần là luật: máy lia theo tay anh chỉ, diễn viên khóc cười theo một cái gật đầu.</p>
-          <p>Người ta nói anh khó tính nhất xứ điện ảnh, cảnh chưa đạt thì quay tới sáng. Nhưng riêng những thước phim có bạn, anh xem đi xem lại, rồi lặng lẽ hô quay thêm lần nữa. Không phải vì cảnh chưa đạt, mà vì anh chưa muốn rời mắt.</p>
-          <p>Bước vào thế giới của anh, nơi ranh giới giữa kịch bản và đời thật mỏng như một khung hình.</p>
+          <p>Bạn — một idol "đỉnh lưu" vạn người mê, bị đóng khung trong vỏ bọc thần tượng thanh thuần, hoàn hảo đến ngột ngạt. Nhưng vào một đêm dưới hầm đỗ xe tranh tối tranh sáng, Cổ Hiểu Thần đã vô tình nhìn thấy con người thật của bạn: vứt bỏ lớp trang điểm, tay run rẩy kẹp điếu thuốc rách, ánh mắt đặc quánh sự bế tắc và rệu rã.</p>
+          <p>Chỉ vì khoảnh khắc chân thật hiếm hoi đó, anh quyết định cược cả sự nghiệp. Anh sa thải nữ chính hạng A, ép bạn bước vào dự án phim tâm lý tội phạm 《霧夜》 (Sương Đêm) trong vai một cô gái điếm dưới đáy xã hội.</p>
+          <p>Tại phim trường ngập ngụa ánh đèn neon và mưa lạnh, anh sẽ dùng mọi thủ đoạn tâm lý sắc bén nhất để đập nát thứ diễn xuất công nghiệp của bạn, ép bạn phải "chảy máu" để thực sự sống cùng nhân vật.</p>
+          <p>Không có những lời đường mật ngôn tình, không có sự chiếm hữu độc hại. Sức hút của Cổ Hiểu Thần là con mắt nghệ thuật sắc như dao mổ, là sự tôn trọng ranh giới tuyệt đối, và là sự chân thành hiếm hoi giấu sâu dưới lớp vỏ khắc nghiệt.</p>
+          <p>Giữa thế giới showbiz đầy dối trá, anh là người duy nhất nhìn thấu và chờ đợi con người thật của bạn sống lại.</p>
         </div>
       </article>
 
-      <!-- [BOT] ─── Bot 4: Cận Đình Sâm ───
+      <!-- [BOT] ─── Bot 3: Cận Đình Sâm ───
            [TYM] data-bot · [LINK BOT] data-link -->
-      <article class="card reveal" data-bot="dinhsam" data-platform="✦ Dokichat" data-link="#">
+      <article class="card reveal" data-bot="dinhsam" data-platform="✦ Google AI Studio" data-link="https://aistudio.google.com/u/0/prompts/1okGFeSxMqlfYZDUM9YwLGbCgDZl6m7ec">
         <div class="card-top">
           <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
             <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
@@ -464,7 +444,10 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
           </svg>
           <div class="tags">
             <span class="tag">Hiện đại</span>
-            <span class="tag">Tình cấm</span>
+            <span class="tag">Trung Quốc</span>            
+            <span class="tag">Ngụy cấm kỵ</span>
+            <span class="tag">Age gap</span>
+            <span class="tag">Dark romance</span>            
             <span class="tag adult">18+</span>
           </div>
         </div>
@@ -475,12 +458,88 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
         </div>
         <!-- [LORE] nội dung dài của Đình Sâm -->
         <div class="lore" hidden>
-          <p>Có những cái tên chỉ cần gọi khẽ một lần là biết mình sắp sai. Cận Đình Sâm là một cái tên như vậy.</p>
-          <p>Giữa hai người là một ranh giới mà cả thế gian đã vạch sẵn, rõ ràng tới mức không ai cần nhắc. Vậy mà mỗi lần chạm mặt, ranh giới ấy lại mỏng đi một chút, như giấy gặp lửa.</p>
-          <p>Thứ tình không được phép gọi tên thường cháy lâu hơn mọi thứ tình được chúc phúc. Bạn đủ can đảm để châm que diêm đầu tiên không?</p>
+          <p>Cận Đình Sâm (47 tuổi) — Gia chủ của đế chế Vĩnh Đình, người nắm giữ quyền sinh sát tại Thượng Hải. Cả đời hắn sống bằng lý trí, kỷ luật thép và sự tính toán vô tình. Không vợ, không con, vô dục vô cầu, sống như một bậc đế vương cô độc tại căn biệt thự cổ ở Vũ Khang Lộ. Với hắn, quy củ và danh tiếng gia tộc  là thứ vĩnh viễn không thể vấy bẩn.</p>
+          <p>Bạn (22 tuổi) — Nàng "công chúa" mang thân phận nứt vỡ. Phát hiện mình chỉ là con gái nuôi của chi thứ họ Cận từ năm 10 tuổi. Mười hai năm sau đó sống trong sự lạnh nhạt của ba mẹ và ánh mắt hằn học của em gái, 22 tuổi, bạn quyết định trốn chạy khỏi chiếc lồng vàng ngột ngạt để về lại Trung Quốc tìm kiếm tự do.</p>
+          <p>Ngỡ rằng thoát khỏi nước Mỹ là chạm tay vào bầu trời tự do, nhưng định mệnh lại bẻ lái tàn nhẫn. Gia tộc ra lệnh: Về nước, bạn bắt buộc phải sống tại biệt thự Vũ Khang Lộ dưới sự quản thúc của "Bác cả" Cận Đình Sâm.</p>
+          <p>Chuyến bay mười mấy tiếng không đưa bạn đến chân trời mới, mà lao thẳng vào một chiếc lồng giam khác — tĩnh lặng, lạnh lẽo, và cấm kỵ gấp vạn lần. Một gã đàn ông 47 năm chỉ biết kiểm soát, một cô gái 22 tuổi mang tâm hồn vụn vỡ khát khao tự do. Cuộc chạm trán giữa họ không chỉ đạp đổ ranh giới luân lý, mà sẽ là sự sụp đổ của một pháo đài ngạo nghễ khi bản năng nguyên thủy bị đánh thức.</p>
+          <p>"Em tưởng mình đang chạy trốn, nào ngờ lại tự nộp mình cho vực thẳm."</p>
         </div>
       </article>
 
+      <!-- [BOT] ─── Bot 4: Khải Eden ───
+           [TYM] data-bot · [LINK BOT] data-link -->
+      <article class="card reveal" data-bot="khaieden" data-platform="✦ Google AI Studio" data-link="https://aistudio.google.com/app/u/0/prompts/1fsKz_HNN6I7CqtR5vkgkGANcMws_HNeT">
+        <div class="card-top">
+          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+            <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
+            <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
+            <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
+            <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">L</text>
+          </svg>
+          <div class="tags">
+            <span class="tag">Nam Bộ Xưa</span>
+            <span class="tag">1960s</span>
+            <span class="tag">Giang hồ</span>
+            <span class="tag">BG</span>            
+            <span class="tag adult">18+</span>
+          </div>
+        </div>
+        <h3>Khải Eden</h3>
+        <div class="card-foot">
+          <button class="fav" type="button" title="Tym cho chàng một cái"><span class="heart">♥</span> <span class="fav-n">…</span></button>
+          <span class="lore-btn">Lore <span>→</span></span>
+        </div>
+        <!-- [LORE] nội dung dài của Khải Eden -->
+        <div class="lore" hidden>
+          <p>Sài Gòn năm 1960, không ai không biết tên Khải Eden. </p>
+          <p>Đi lên từ vỉa hè, đánh giày bán báo, gã vươn lên thành ông trùm giang hồ khét tiếng đô thành ở tuổi 22, nắm trong tay quyền bảo kê hàng loạt vũ trường, sòng bạc sầm uất nhất nhì Sài Gòn.</p>
+          <p>Lạnh lẽo. Cộc lốc. Bạo liệt. Khải mang trên người đầy vết sẹo gươm đao và một tuổi thơ nát bươm chôn chặt dưới đáy mắt. Gã ngạo mạn coi trời bằng vung, nhưng lại ôm những nguyên tắc bất di bất dịch: Không đụng thuốc phiện. Không phản anh em. Bắt buộc bảo vệ phụ nữ và trẻ nhỏ. </p>
+          <p>Với Khải, tình yêu là thứ xa xỉ nực cười. Cho đến một đêm mưa, gã gặp "cô" — nàng ca sĩ có đôi mắt bình thản đến mức làm gã chướng mắt.</p>
+          <p>Khải không phải công tử hào hoa. Gã không bao giờ nói "anh yêu em". Tình cảm của một tên đao búa được giấu nhẹm sau những lịnh cấm cộc lốc, sau xưng hô "tao - cô" đầy xa cách, và sau những đêm dài lặng lẽ đậu xe trước cửa phòng trà chỉ để nghe cô hát. Gã dửng dưng với cả thế giới, nhưng sẵn sàng lật tung Sài Gòn, xé xác bất cứ kẻ nào dám đụng vào cổ tay cô.</p>
+          <p>Một kẻ trước giờ chỉ quen lấy máu đổi tiền, lần đầu tiên trong đời, biết sợ mất đi một thứ còn hơn cả mạng sống của chính mình.</p>
+        </div>
+      </article>
+
+      <!-- [BOT] ─── Bot 5: Dạ Đông Phong ───
+           [TYM] data-bot · [LINK BOT] data-link -->
+      <article class="card reveal" data-bot="dadongphong" data-platform="✦ Google AI Studio"
+        data-link="https://aistudio.google.com/app/prompts/1EK30zi6i9ARzrTAfKP5HslLfwMkM0fOf" data-link-label="Bản BG"
+        data-link2="https://aistudio.google.com/app/prompts/1JAgVKJ3XC-bUNv9yh5hURJuKdJL7psby" data-link2-label="Bản BL">
+        <div class="card-top">
+          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+            <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
+            <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
+            <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
+            <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">L</text>
+          </svg>
+          <div class="tags">
+            <span class="tag">Cổ đại</span>
+            <span class="tag">Tướng quân</span>
+            <span class="tag">Tàn bạo</span>
+            <span class="tag">BG</span>
+            <span class="tag">BL</span>            
+            <span class="tag adult">18+</span>
+          </div>
+        </div>
+        <h3>Dạ Đông Phong</h3>
+        <div class="card-foot">
+          <button class="fav" type="button" title="Tym cho chàng một cái"><span class="heart">♥</span> <span class="fav-n">…</span></button>
+          <span class="lore-btn">Lore <span>→</span></span>
+        </div>
+        <!-- [LORE] nội dung dài của Dạ Đông Phong -->
+        <div class="lore" hidden>
+          <p>Một Sát Thần tay nhuốm máu vạn người. Một công chúa vong quốc mang lớp mặt nạ ngây dại.</p>
+          <p>Ba năm sau ngày Vân Tịch quốc bị san phẳng, vị công chúa cuối cùng bị ép gả cho Dạ Đông Phong — Trấn Bắc Vương Đại Dạ, tàn nhẫn và quyền khuynh thiên hạ, cũng chính là kẻ đã đạp đổ quê hương nàng.</p>
+          <p>Trong mắt thiên hạ, nàng chỉ là một phế vật phát điên vì hoảng sợ, một sự sỉ nhục chính trị mà Hoàng đế ném vào phủ Trấn Bắc. Nhưng với bản năng sắc bén của loài thú săn mồi, Dạ Đông Phong sớm đánh hơi được sự bất thường. Hắn nghi ngờ nàng giả ngốc.</p>
+          <p>Tuy nhiên, La Sát tướng quân không vội vung đao. Hắn giữ nàng lại, dùng áp bức tột cùng và sự lạnh nhạt đến rợn người để vờn bức, kiên nhẫn chờ đợi khoảnh khắc chiếc mặt nạ kia rạn nứt. Ở nơi vương phủ ngập tràn sát khí, không tồn tại tình yêu, chỉ có khát vọng kiểm soát bạo chúa và một trò chơi tâm lý nghẹt thở.</p>
+          <p>Nàng diễn kịch để sinh tồn. Hắn khóa chặt để cai trị.</p>
+          <p>Chỉ một sơ hở, nàng sẽ vùi thây. Nhưng nếu ván cờ này đi đến tận cùng, liệu thứ sụp đổ là lớp ngụy trang của nàng... hay là sự tỉnh táo, vô tình của chính hắn?</p>
+          <p>Đêm tân hôn — trò chơi sinh tử chính thức bắt đầu.</p>
+        </div>
+      </article>
+      
       <!-- Ô "đang chờ chín": chỉ hiện khi lọc "Tất cả". Muốn xoá thì xoá nguyên khối <article> này -->
       <article class="card soon reveal">
         <div class="bud">🍒</div>
@@ -506,7 +565,7 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   <footer class="footer">
     <div class="wrap">
       <!-- [LINK FACEBOOK] dán link Facebook vào href bên dưới -->
-      <a class="btn" href="#" target="_blank" rel="noopener">Theo dõi trên Facebook</a>
+      <a class="btn" href="https://www.facebook.com/profile.php?id=61582234705602" target="_blank" rel="noopener">Theo dõi trên Facebook</a>
       <p class="foot-note">Mọi nhân vật trong vườn đều là hư cấu · Nội dung dành cho độc giả 18+</p>
       <p class="foot-copy">© 2026 Vườn Anh Đào của Sherry</p>
     </div>
@@ -520,7 +579,7 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
       <div class="lore-body" id="loreBody"></div>
       <div class="lore-foot">
         <span class="platform" id="lorePlat"></span>
-        <a class="visit" id="loreVisit" href="#" target="_blank" rel="noopener">Ghé thăm chàng <span>→</span></a>
+        <div class="lore-links" id="loreLinks"></div>
       </div>
     </div>
   </div>
@@ -530,12 +589,12 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
 <script>
 document.documentElement.classList.add('js');
 
-/* chuyển giữa cổng vườn và trang trong theo hash (#vuon) */
+/* chuyển giữa cổng vườn và trang trong theo hash (#garden) */
 (function(){
-  var gate = document.getElementById('cong');
-  var garden = document.getElementById('vuon');
+  var gate = document.getElementById('gate');
+  var garden = document.getElementById('garden');
   function sync(){
-    var inGarden = location.hash === '#vuon';
+    var inGarden = location.hash === '#garden';
     gate.classList.toggle('is-hidden', inGarden);
     garden.classList.toggle('is-hidden', !inGarden);
     window.scrollTo(0, 0);
@@ -608,7 +667,7 @@ document.documentElement.classList.add('js');
   var headEl  = document.getElementById('loreHead');
   var bodyEl  = document.getElementById('loreBody');
   var platEl  = document.getElementById('lorePlat');
-  var linkEl  = document.getElementById('loreVisit');
+  var linksEl = document.getElementById('loreLinks');
 
   function openLore(card){
     var seal = card.querySelector('.seal');
@@ -622,7 +681,20 @@ document.documentElement.classList.add('js');
     var lore = card.querySelector('.lore');
     bodyEl.innerHTML = lore ? lore.innerHTML : '<p>Lore đang được viết...</p>';
     platEl.textContent = card.getAttribute('data-platform') || '';
-    linkEl.href = card.getAttribute('data-link') || '#';
+    linksEl.innerHTML = '';
+[
+  [card.getAttribute('data-link'),  card.getAttribute('data-link-label')  || 'Gặp chồng liền'],
+  [card.getAttribute('data-link2'), card.getAttribute('data-link2-label') || 'Bản 2']
+].forEach(function(d){
+  if(!d[0]) return;
+  var a = document.createElement('a');
+  a.className = 'visit';
+  a.href = d[0];
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.innerHTML = d[1] + ' <span>→</span>';
+  linksEl.appendChild(a);
+});
     overlay.classList.remove('is-hidden');
     document.body.style.overflow = 'hidden';
   }
