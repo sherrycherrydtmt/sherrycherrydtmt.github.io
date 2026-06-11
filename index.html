@@ -168,6 +168,16 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   border-color:transparent;color:#fff;
   box-shadow:0 6px 16px rgba(224,100,147,.30);
 }
+  .filter.co-nut-gon{margin-bottom:12px}
+  .filter.thu-gon{max-height:84px;overflow:hidden}
+  .filter-toggle{
+    display:block;margin:0 auto 36px;
+    font-family:inherit;font-size:.78rem;font-weight:500;
+    padding:7px 18px;border-radius:999px;cursor:pointer;
+    background:transparent;border:1px dashed var(--line);color:var(--muted);
+    transition:color .2s ease, border-color .2s ease;
+}
+  .filter-toggle:hover{color:var(--rose-deep);border-color:var(--rose)}
 
 /* ───────────────────────── thẻ bot ───────────────────────── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:20px}
@@ -448,7 +458,8 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
             <span class="tag">Ngụy cấm kỵ</span>
             <span class="tag">Age gap</span>
             <span class="tag">CEO</span>                        
-            <span class="tag">Dark romance</span>            
+            <span class="tag">Dark Romance</span>            
+            <span class="tag">BG</span>            
             <span class="tag adult">18+</span>
           </div>
         </div>
@@ -965,6 +976,25 @@ document.documentElement.classList.add('js');
   }
   makeChip('Tất cả 🍒', '*').classList.add('on');
   tags.forEach(function(t){ makeChip(t, t); });
+  /* [THU GỌN TAG] thanh tag dài quá 2 hàng sẽ tự có nút xem hết / thu gọn */
+function kiemTraGon(){
+  if(bar.getAttribute('data-da-kiem-tra')) return;
+  if(bar.offsetParent === null) return; /* trang trong đang ẩn thì đợi lần mở sau */
+  bar.setAttribute('data-da-kiem-tra', '1');
+  if(bar.scrollHeight <= 95) return;    /* tag ít thì khỏi cần nút */
+  bar.classList.add('thu-gon', 'co-nut-gon');
+  var nut = document.createElement('button');
+  nut.type = 'button';
+  nut.className = 'filter-toggle';
+  nut.textContent = 'Xem hết tag ▾';
+  bar.parentNode.insertBefore(nut, bar.nextSibling);
+  nut.addEventListener('click', function(){
+    var dangGon = bar.classList.toggle('thu-gon');
+    nut.textContent = dangGon ? 'Xem hết tag ▾' : 'Thu gọn tag ▴';
+  });
+}
+kiemTraGon();
+window.addEventListener('hashchange', function(){ setTimeout(kiemTraGon, 50); });
   bar.addEventListener('click', function(e){
     var btn = e.target.closest('.chip');
     if(!btn) return;
