@@ -6,6 +6,9 @@
 
 <!-- ═══════════════════════════════════════════════════════════════
   VƯỜN ANH ĐÀO CỦA SHERRY (Sherry Cherry) · index.html
+  Trang có 2 màn: CỔNG VƯỜN (màn chào) và TRANG TRONG (danh sách bot).
+  Bấm "Dạo vườn" mới bước vào trang trong.
+
   HƯỚNG DẪN SỬA NHANH: dùng tìm kiếm (Ctrl+F) các từ khoá sau:
 
     [TÊN TRANG]      đổi tên trang, tagline
@@ -13,6 +16,9 @@
     [BOT]            mỗi bot là một khối <article> ... </article>
                      · Thêm bot: copy nguyên một khối, dán xuống dưới, sửa chữ
                      · Xoá bot: xoá nguyên khối đó
+    [BỘ LỌC]         thanh lọc TỰ ĐỘNG lấy theo các tag trên thẻ bot,
+                     thêm/sửa tag trong thẻ là bộ lọc tự cập nhật,
+                     riêng tag 18+ không tính vào bộ lọc
     [LINK BOT]       dán link AI Studio / Dokichat của bot vào href="#"
     [LINK FACEBOOK]  dán link Facebook của bạn vào href="#"
     [GIỚI THIỆU]     sửa đoạn giới thiệu về Sherry
@@ -62,7 +68,7 @@ body{
 a{color:inherit}
 a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
-header,main,footer{position:relative;z-index:1}
+.is-hidden{display:none !important}
 
 /* ───────────────────────── mưa cherry ───────────────────────── */
 .drops{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -80,8 +86,13 @@ header,main,footer{position:relative;z-index:1}
   100%{transform:translate3d(-1vw,112vh,0) rotate(480deg)}
 }
 
-/* ───────────────────────── hero ───────────────────────── */
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:92px;padding-bottom:72px}
+/* ═════════════════ MÀN 1: CỔNG VƯỜN ═════════════════ */
+.gate{
+  position:relative;z-index:1;
+  min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:46px 22px;
+}
 .overline{font-size:.72rem;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--rose)}
 h1{
   font-family:'Cormorant Garamond',serif;font-weight:600;
@@ -100,19 +111,19 @@ h1{
 }
 
 /* [ẢNH] khung ảnh thương hiệu */
-.hero-art{width:min(280px,66vw);margin:32px auto 10px;transform:rotate(-2.5deg)}
+.hero-art{width:min(260px,60vw);margin:30px auto 8px;transform:rotate(-2.5deg)}
 .hero-art img{
   width:100%;display:block;border-radius:28px;
   border:6px solid #fff;
   box-shadow:0 18px 44px rgba(224,100,147,.24);
 }
 
-.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
 .btn{
   display:inline-flex;align-items:center;gap:9px;
   padding:12px 28px;border-radius:999px;
   background:#fff;border:1px solid var(--line);
-  color:var(--head);text-decoration:none;font-size:.92rem;font-weight:500;
+  color:var(--head);text-decoration:none;font-size:.92rem;font-weight:500;cursor:pointer;
   transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 .btn:hover{transform:translateY(-2px);border-color:var(--rose)}
@@ -121,12 +132,39 @@ h1{
   color:#fff;box-shadow:0 8px 24px rgba(224,100,147,.35);
 }
 .btn-primary:hover{box-shadow:0 12px 30px rgba(224,100,147,.45)}
+.gate-hint{margin-top:22px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 
-/* ───────────────────────── khối chung ───────────────────────── */
-.section{padding:84px 0}
-.sec-head{text-align:center;margin-bottom:46px}
+/* ═════════════════ MÀN 2: TRANG TRONG ═════════════════ */
+.garden{position:relative;z-index:1}
+.topbar{
+  position:sticky;top:0;z-index:5;
+  background:rgba(253,236,243,.88);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:1040px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.06rem;color:var(--head);text-decoration:none}
+.back{font-size:.84rem;font-weight:500;color:var(--rose-deep);text-decoration:none;white-space:nowrap;transition:color .2s ease}
+.back:hover{color:#a23260}
+
+.section{padding:74px 0}
+.sec-head{text-align:center;margin-bottom:38px}
 h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem,5vw,2.7rem);color:var(--head);margin:12px 0 8px}
 .sec-sub{color:var(--muted);font-size:.97rem}
+
+/* [BỘ LỌC] thanh lọc theo tag */
+.filter{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin:0 0 36px}
+.chip{
+  font-family:inherit;font-size:.78rem;font-weight:500;letter-spacing:.04em;
+  padding:8px 18px;border-radius:999px;cursor:pointer;
+  background:#fff;border:1px solid var(--line);color:var(--rose-deep);
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.chip:hover{transform:translateY(-1px);border-color:var(--rose)}
+.chip.on{
+  background:linear-gradient(120deg,#ef87ab,#df5e90);
+  border-color:transparent;color:#fff;
+  box-shadow:0 6px 16px rgba(224,100,147,.30);
+}
 
 /* ───────────────────────── thẻ bot ───────────────────────── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:20px}
@@ -137,6 +175,7 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   box-shadow:0 8px 26px rgba(205,90,135,.08);
   transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
+.card.is-hide{display:none}
 .card::before{
   content:"";position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent,var(--rose),transparent);
@@ -187,13 +226,13 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
 .js .reveal.in{opacity:1;transform:none}
 
 @media (max-width:600px){
-  .hero{padding-top:72px;padding-bottom:56px}
-  .section{padding:62px 0}
+  .section{padding:56px 0}
+  .hero-art{width:min(225px,58vw)}
 }
 @media (prefers-reduced-motion: reduce){
   .drops{display:none}
   .js .reveal{opacity:1;transform:none;transition:none}
-  .card,.btn,.visit{transition:none}
+  .card,.btn,.visit,.chip{transition:none}
 }
 </style>
 </head>
@@ -212,8 +251,8 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
 <!-- lớp mưa cherry (tự sinh bằng JS ở cuối trang) -->
 <div class="drops" id="drops" aria-hidden="true"></div>
 
-<!-- ═════════════════════ HERO ═════════════════════ -->
-<header class="hero wrap">
+<!-- ═════════════════════ MÀN 1: CỔNG VƯỜN ═════════════════════ -->
+<header class="gate" id="cong">
   <p class="overline reveal">sherry cherry · vườn của những câu chuyện</p>
 
   <!-- [TÊN TRANG] tên hiển thị giữa trang -->
@@ -229,156 +268,187 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   </div>
 
   <div class="cta reveal">
-    <a class="btn btn-primary" href="#bots">Dạo vườn 🍒</a>
+    <a class="btn btn-primary" href="#vuon">Dạo vườn 🍒</a>
     <!-- [LINK FACEBOOK] dán link Facebook vào href bên dưới -->
     <a class="btn" href="#" target="_blank" rel="noopener">Facebook</a>
   </div>
+
+  <p class="gate-hint reveal">bước qua cổng để gặp các cư dân</p>
 </header>
 
-<main>
-<!-- ═════════════════════ DANH SÁCH BOT ═════════════════════ -->
-<section class="section wrap" id="bots">
-  <div class="sec-head reveal">
-    <p class="overline">danh sách bot</p>
-    <h2>Cư dân trong vườn</h2>
-    <p class="sec-sub">Chạm vào một cái tên, một câu chuyện sẽ bắt đầu.</p>
-  </div>
+<!-- ═════════════════════ MÀN 2: TRANG TRONG ═════════════════════ -->
+<div class="garden is-hidden" id="vuon">
 
-  <div class="grid">
+  <nav class="topbar">
+    <div class="topbar-in">
+      <a class="brand" href="#">🍒 Vườn Anh Đào của Sherry</a>
+      <a class="back" href="#">← Về cổng vườn</a>
+    </div>
+  </nav>
 
-    <!-- [BOT] ─── Bot 1: Dương Hữu Khiêm ─── -->
-    <article class="card reveal">
-      <div class="card-top">
-        <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-          <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
-          <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
-          <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
-          <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">K</text>
-        </svg>
-        <div class="tags">
-          <span class="tag">1930s Nam Bộ</span>
-          <span class="tag">Dark Romance</span>
-          <span class="tag adult">18+</span>
+  <main>
+  <!-- ───────────── DANH SÁCH BOT ───────────── -->
+  <section class="section wrap" id="bots">
+    <div class="sec-head reveal">
+      <p class="overline">danh sách bot</p>
+      <h2>Cư dân trong vườn</h2>
+      <p class="sec-sub">Chọn một tag để lọc, hoặc chạm vào một cái tên để bắt đầu câu chuyện.</p>
+    </div>
+
+    <!-- [BỘ LỌC] các nút lọc tự sinh ở đây, không cần sửa gì -->
+    <div class="filter reveal" id="filter" role="group" aria-label="Lọc bot theo tag"></div>
+
+    <div class="grid" id="grid">
+
+      <!-- [BOT] ─── Bot 1: Dương Hữu Khiêm ─── -->
+      <article class="card reveal">
+        <div class="card-top">
+          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+            <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
+            <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
+            <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
+            <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">K</text>
+          </svg>
+          <div class="tags">
+            <span class="tag">1930s Nam Bộ</span>
+            <span class="tag">Dark Romance</span>
+            <span class="tag adult">18+</span>
+          </div>
         </div>
-      </div>
-      <h3>Dương Hữu Khiêm</h3>
-      <p class="hook">Cậu Hai nhà điền chủ Bạc Liêu, tiêu tiền như nước lớn, lạnh lùng như nước ròng. Người ta đồn cậu chưa từng cúi đầu trước ai, cho tới khi gặp bạn.</p>
-      <div class="card-foot">
-        <span class="platform">✦ Google AI Studio</span>
-        <!-- [LINK BOT] dán link bot vào href bên dưới -->
-        <a class="visit" href="#">Ghé thăm <span>→</span></a>
-      </div>
-    </article>
-
-    <!-- [BOT] ─── Bot 2: Ôn Lạc Trần ─── -->
-    <article class="card reveal">
-      <div class="card-top">
-        <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-          <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
-          <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
-          <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
-          <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">L</text>
-        </svg>
-        <div class="tags">
-          <span class="tag">Cổ trang</span>
-          <span class="tag">Thế tử</span>
-          <span class="tag adult">18+</span>
+        <h3>Dương Hữu Khiêm</h3>
+        <p class="hook">Cậu Hai nhà điền chủ Bạc Liêu, tiêu tiền như nước lớn, lạnh lùng như nước ròng. Người ta đồn cậu chưa từng cúi đầu trước ai, cho tới khi gặp bạn.</p>
+        <div class="card-foot">
+          <span class="platform">✦ Google AI Studio</span>
+          <!-- [LINK BOT] dán link bot vào href bên dưới -->
+          <a class="visit" href="#">Ghé thăm <span>→</span></a>
         </div>
-      </div>
-      <h3>Ôn Lạc Trần</h3>
-      <p class="hook">Thế tử nhà họ Ôn, hai mươi hai tuổi, quyền thế nghiêng một phương mà lòng dạ phủ sương giá. Cả phủ ai cũng cúi đầu nín thở, chỉ riêng bạn dám ngẩng lên nhìn chàng.</p>
-      <div class="card-foot">
-        <span class="platform">✦ Google AI Studio</span>
-        <!-- [LINK BOT] dán link bot vào href bên dưới -->
-        <a class="visit" href="#">Ghé thăm <span>→</span></a>
-      </div>
-    </article>
+      </article>
 
-    <!-- [BOT] ─── Bot 3: Cổ Hiểu Thần ─── -->
-    <article class="card reveal">
-      <div class="card-top">
-        <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-          <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
-          <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
-          <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
-          <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">T</text>
-        </svg>
-        <div class="tags">
-          <span class="tag">Hồng Kông</span>
-          <span class="tag">Showbiz</span>
-          <span class="tag adult">18+</span>
+      <!-- [BOT] ─── Bot 2: Ôn Lạc Trần ─── -->
+      <article class="card reveal">
+        <div class="card-top">
+          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+            <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
+            <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
+            <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
+            <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">L</text>
+          </svg>
+          <div class="tags">
+            <span class="tag">Cổ trang</span>
+            <span class="tag">Thế tử</span>
+            <span class="tag adult">18+</span>
+          </div>
         </div>
-      </div>
-      <h3>Cổ Hiểu Thần</h3>
-      <p class="hook">Vị đạo diễn quen sắp đặt mọi khung hình, mọi ánh đèn của màn ảnh Hồng Kông. Chỉ riêng những cảnh có bạn, anh quay mãi vẫn chưa chịu hô cắt.</p>
-      <div class="card-foot">
-        <span class="platform">✦ Google AI Studio</span>
-        <!-- [LINK BOT] dán link bot vào href bên dưới -->
-        <a class="visit" href="#">Ghé thăm <span>→</span></a>
-      </div>
-    </article>
-
-    <!-- [BOT] ─── Bot 4: Cận Đình Sâm ─── -->
-    <article class="card reveal">
-      <div class="card-top">
-        <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-          <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
-          <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
-          <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
-          <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">S</text>
-        </svg>
-        <div class="tags">
-          <span class="tag">Hiện đại</span>
-          <span class="tag">Tình cấm</span>
-          <span class="tag adult">18+</span>
+        <h3>Ôn Lạc Trần</h3>
+        <p class="hook">Thế tử nhà họ Ôn, hai mươi hai tuổi, quyền thế nghiêng một phương mà lòng dạ phủ sương giá. Cả phủ ai cũng cúi đầu nín thở, chỉ riêng bạn dám ngẩng lên nhìn chàng.</p>
+        <div class="card-foot">
+          <span class="platform">✦ Google AI Studio</span>
+          <!-- [LINK BOT] dán link bot vào href bên dưới -->
+          <a class="visit" href="#">Ghé thăm <span>→</span></a>
         </div>
-      </div>
-      <h3>Cận Đình Sâm</h3>
-      <p class="hook">Một cái tên không nên gọi, một ánh mắt không nên giữ. Nhưng lửa đã bén vào thứ tình không được phép, thì càng cấm lại càng đượm.</p>
-      <div class="card-foot">
-        <span class="platform">✦ Dokichat</span>
-        <!-- [LINK BOT] dán link bot vào href bên dưới -->
-        <a class="visit" href="#">Ghé thăm <span>→</span></a>
-      </div>
-    </article>
+      </article>
 
-    <!-- Ô "đang chờ chín": muốn xoá thì xoá nguyên khối <article> này -->
-    <article class="card soon reveal">
-      <div class="bud">🍒</div>
-      <h3>Đang chờ chín</h3>
-      <p class="hook">Vài trái còn xanh trên cành, đang đợi nắng. Mùa sau ghé lại, vườn sẽ thêm ngọt.</p>
-    </article>
+      <!-- [BOT] ─── Bot 3: Cổ Hiểu Thần ─── -->
+      <article class="card reveal">
+        <div class="card-top">
+          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+            <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
+            <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
+            <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
+            <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">T</text>
+          </svg>
+          <div class="tags">
+            <span class="tag">Hồng Kông</span>
+            <span class="tag">Showbiz</span>
+            <span class="tag adult">18+</span>
+          </div>
+        </div>
+        <h3>Cổ Hiểu Thần</h3>
+        <p class="hook">Vị đạo diễn quen sắp đặt mọi khung hình, mọi ánh đèn của màn ảnh Hồng Kông. Chỉ riêng những cảnh có bạn, anh quay mãi vẫn chưa chịu hô cắt.</p>
+        <div class="card-foot">
+          <span class="platform">✦ Google AI Studio</span>
+          <!-- [LINK BOT] dán link bot vào href bên dưới -->
+          <a class="visit" href="#">Ghé thăm <span>→</span></a>
+        </div>
+      </article>
 
-  </div>
-</section>
+      <!-- [BOT] ─── Bot 4: Cận Đình Sâm ─── -->
+      <article class="card reveal">
+        <div class="card-top">
+          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+            <ellipse cx="47" cy="6.5" rx="8" ry="4.2" fill="#bcd6a0" transform="rotate(16 47 6.5)"/>
+            <circle cx="32" cy="39" r="22" fill="url(#cherryG)"/>
+            <ellipse cx="23.5" cy="31" rx="6.2" ry="3.6" fill="#fff" opacity=".9" transform="rotate(-24 23.5 31)"/>
+            <text x="32" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="23" font-weight="700" fill="#fff">S</text>
+          </svg>
+          <div class="tags">
+            <span class="tag">Hiện đại</span>
+            <span class="tag">Tình cấm</span>
+            <span class="tag adult">18+</span>
+          </div>
+        </div>
+        <h3>Cận Đình Sâm</h3>
+        <p class="hook">Một cái tên không nên gọi, một ánh mắt không nên giữ. Nhưng lửa đã bén vào thứ tình không được phép, thì càng cấm lại càng đượm.</p>
+        <div class="card-foot">
+          <span class="platform">✦ Dokichat</span>
+          <!-- [LINK BOT] dán link bot vào href bên dưới -->
+          <a class="visit" href="#">Ghé thăm <span>→</span></a>
+        </div>
+      </article>
 
-<!-- ═════════════════════ GIỚI THIỆU ═════════════════════ -->
-<section class="section wrap">
-  <div class="sec-head reveal" style="margin-bottom:22px">
-    <p class="overline">về người làm vườn</p>
-    <h2>Sherry Cherry</h2>
-  </div>
-  <!-- [GIỚI THIỆU] sửa đoạn này theo ý bạn -->
-  <p class="about-text reveal">Mình là Sherry, người làm vườn ở đây. Mỗi bot trong vườn là một thế giới nhỏ được chăm chút từ giọng văn, tính cách, cho tới từng cái nhíu mày, từng hơi thở dài. Vườn còn thưa cây, nhưng mỗi mùa sẽ lại trĩu thêm quả ngọt. Ghé chơi thường nha.</p>
-</section>
-</main>
+      <!-- Ô "đang chờ chín": chỉ hiện khi lọc "Tất cả". Muốn xoá thì xoá nguyên khối <article> này -->
+      <article class="card soon reveal">
+        <div class="bud">🍒</div>
+        <h3>Đang chờ chín</h3>
+        <p class="hook">Vài trái còn xanh trên cành, đang đợi nắng. Mùa sau ghé lại, vườn sẽ thêm ngọt.</p>
+      </article>
 
-<!-- ═════════════════════ FOOTER ═════════════════════ -->
-<footer class="footer">
-  <div class="wrap">
-    <!-- [LINK FACEBOOK] dán link Facebook vào href bên dưới -->
-    <a class="btn" href="#" target="_blank" rel="noopener">Theo dõi trên Facebook</a>
-    <p class="foot-note">Mọi nhân vật trong vườn đều là hư cấu · Nội dung dành cho độc giả 18+</p>
-    <p class="foot-copy">© 2026 Vườn Anh Đào của Sherry</p>
-  </div>
-</footer>
+    </div>
+  </section>
+
+  <!-- ───────────── GIỚI THIỆU ───────────── -->
+  <section class="section wrap">
+    <div class="sec-head reveal" style="margin-bottom:22px">
+      <p class="overline">về người làm vườn</p>
+      <h2>Sherry Cherry</h2>
+    </div>
+    <!-- [GIỚI THIỆU] sửa đoạn này theo ý bạn -->
+    <p class="about-text reveal">Mình là Sherry, người làm vườn ở đây. Mỗi bot trong vườn là một thế giới nhỏ được chăm chút từ giọng văn, tính cách, cho tới từng cái nhíu mày, từng hơi thở dài. Vườn còn thưa cây, nhưng mỗi mùa sẽ lại trĩu thêm quả ngọt. Ghé chơi thường nha.</p>
+  </section>
+  </main>
+
+  <!-- ───────────── FOOTER ───────────── -->
+  <footer class="footer">
+    <div class="wrap">
+      <!-- [LINK FACEBOOK] dán link Facebook vào href bên dưới -->
+      <a class="btn" href="#" target="_blank" rel="noopener">Theo dõi trên Facebook</a>
+      <p class="foot-note">Mọi nhân vật trong vườn đều là hư cấu · Nội dung dành cho độc giả 18+</p>
+      <p class="foot-copy">© 2026 Vườn Anh Đào của Sherry</p>
+    </div>
+  </footer>
+
+</div><!-- /trang trong -->
 
 <script>
 document.documentElement.classList.add('js');
+
+/* chuyển giữa cổng vườn và trang trong theo hash (#vuon) */
+(function(){
+  var gate = document.getElementById('cong');
+  var garden = document.getElementById('vuon');
+  function sync(){
+    var inGarden = location.hash === '#vuon';
+    gate.classList.toggle('is-hidden', inGarden);
+    garden.classList.toggle('is-hidden', !inGarden);
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', sync);
+  sync();
+})();
 
 /* sinh mưa cherry */
 (function(){
@@ -399,11 +469,57 @@ document.documentElement.classList.add('js');
   }
 })();
 
+/* [BỘ LỌC] tự gom tag từ các thẻ bot rồi tạo nút lọc (bỏ qua tag 18+) */
+(function(){
+  var grid = document.getElementById('grid');
+  var bar = document.getElementById('filter');
+  if(!grid || !bar) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var tags = [];
+  cards.forEach(function(c){
+    Array.prototype.forEach.call(c.querySelectorAll('.tag:not(.adult)'), function(t){
+      var v = t.textContent.trim();
+      if(v && tags.indexOf(v) < 0) tags.push(v);
+    });
+  });
+  function makeChip(label, value){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip';
+    b.textContent = label;
+    b.setAttribute('data-val', value);
+    bar.appendChild(b);
+    return b;
+  }
+  makeChip('Tất cả 🍒', '*').classList.add('on');
+  tags.forEach(function(t){ makeChip(t, t); });
+  bar.addEventListener('click', function(e){
+    var btn = e.target.closest('.chip');
+    if(!btn) return;
+    Array.prototype.forEach.call(bar.querySelectorAll('.chip'), function(x){ x.classList.remove('on'); });
+    btn.classList.add('on');
+    var v = btn.getAttribute('data-val');
+    cards.forEach(function(c){
+      var show;
+      if(c.classList.contains('soon')){
+        show = (v === '*');  /* ô "đang chờ chín" chỉ hiện ở Tất cả */
+      } else if(v === '*'){
+        show = true;
+      } else {
+        show = Array.prototype.some.call(c.querySelectorAll('.tag'), function(t){
+          return t.textContent.trim() === v;
+        });
+      }
+      c.classList.toggle('is-hide', !show);
+    });
+  });
+})();
+
 /* hiệu ứng hiện dần khi cuộn */
 (function(){
   var els = document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('in'); });
+    Array.prototype.forEach.call(els, function(el){ el.classList.add('in'); });
     return;
   }
   var io = new IntersectionObserver(function(entries){
@@ -411,7 +527,7 @@ document.documentElement.classList.add('js');
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, {threshold:.12});
-  els.forEach(function(el){ io.observe(el); });
+  Array.prototype.forEach.call(els, function(el){ io.observe(el); });
 })();
 </script>
 </body>
