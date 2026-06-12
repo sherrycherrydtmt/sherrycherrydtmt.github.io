@@ -178,6 +178,11 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
     transition:color .2s ease, border-color .2s ease;
 }
   .filter-toggle:hover{color:var(--rose-deep);border-color:var(--rose)}
+  .bot-count{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.05rem;color:var(--muted);text-align:center;
+    margin:-16px 0 34px;
+  }
 
 /* ───────────────────────── thẻ bot ───────────────────────── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:20px}
@@ -370,6 +375,9 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
 
     <!-- [BỘ LỌC] các nút lọc tự sinh ở đây, không cần sửa gì -->
     <div class="filter reveal" id="filter" role="group" aria-label="Lọc bot theo tag"></div>
+
+    <!-- [ĐẾM BOT] dòng đếm tự động, không cần sửa tay -->
+    <p class="bot-count reveal" id="botCount"></p>
 
     <div class="grid" id="grid">
 
@@ -591,7 +599,7 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
 
       <!-- [BOT] ─── Bot 7: Đỗ Đình Thế Nguyên ───
            [TYM] data-bot · [LINK BOT] data-link -->
-      <article class="card reveal" data-bot="khaieden" data-platform="✦ Google AI Studio" data-link="https://aistudio.google.com/app/prompts/16kegd7ei-hK_hC4xuRqKsRik2VXvjVMI">
+      <article class="card reveal" data-bot="thenguyen" data-platform="✦ Google AI Studio" data-link="https://aistudio.google.com/app/prompts/16kegd7ei-hK_hC4xuRqKsRik2VXvjVMI">
         <div class="card-top">
           <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
             <path d="M33 17 C 31 9, 37 5, 43 3" stroke="#a8c98b" stroke-width="3.6" fill="none" stroke-linecap="round"/>
@@ -950,6 +958,15 @@ document.documentElement.classList.add('js');
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && !overlay.classList.contains('is-hidden')) closeLore();
   });
+})();
+
+/* [ĐẾM BOT] tự đếm số bot trong vườn (không tính ô "đang chờ chín").
+   Muốn đổi câu chữ thì sửa dòng textContent bên dưới. */
+(function(){
+  var o = document.getElementById('botCount');
+  if(!o) return;
+  var n = document.querySelectorAll('#grid .card:not(.soon)').length;
+  o.textContent = 'Đang có ' + n + ' quả cherry mọng nước 🍒';
 })();
 
 /* [BỘ LỌC] tự gom tag từ các thẻ bot rồi tạo nút lọc (bỏ qua tag 18+) */
