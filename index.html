@@ -180,9 +180,10 @@ h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.9rem
   .filter-toggle:hover{color:var(--rose-deep);border-color:var(--rose)}
   .bot-count{
     font-family:'Cormorant Garamond',serif;font-style:italic;
-    font-size:1.05rem;color:var(--muted);text-align:center;
+    font-size:1.3rem;color:var(--muted);text-align:center;
     margin:-16px 0 34px;
   }
+  .bot-count-n{color:var(--rose-deep);font-weight:700;font-size:1.2em}
 
 /* ───────────────────────── thẻ bot ───────────────────────── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:20px}
@@ -966,7 +967,7 @@ document.documentElement.classList.add('js');
   var o = document.getElementById('botCount');
   if(!o) return;
   var n = document.querySelectorAll('#grid .card:not(.soon)').length;
-  o.textContent = 'Đang có ' + n + ' quả cherry mọng nước 🍒';
+  o.innerHTML = 'Đang có <span class="bot-count-n">' + n + '</span> quả cherry mọng nước 🍒';
 })();
 
 /* [BỘ LỌC] tự gom tag từ các thẻ bot rồi tạo nút lọc (bỏ qua tag 18+) */
